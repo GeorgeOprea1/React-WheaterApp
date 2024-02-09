@@ -1,8 +1,14 @@
 import { IoLocationOutline } from "react-icons/io5";
 import { FaRegMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
+import { useState } from "react";
 
 const Temperature = ({ setCity, stats, getLocation }) => {
+  const [isCelsius, setIsCelsius] = useState(true);
+  const handleToggle = () => {
+    setIsCelsius((prevIsCelsius) => !prevIsCelsius);
+  };
+
   const handleCityChange = (e) => {
     setCity(e.target.value);
   };
@@ -36,9 +42,21 @@ const Temperature = ({ setCity, stats, getLocation }) => {
           />
         )}
       </div>
-      <div className="flex justify-center items-center text-slate-200 mt-8  text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
-        <h1 className="font-semibold text-[55px] ">{stats.temp}</h1>
-        <h2 className="text-[33px]">°C</h2>
+      <div
+        onClick={handleToggle}
+        className="flex justify-center items-center text-slate-200 mt-8  text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer"
+      >
+        {isCelsius ? (
+          <>
+            <h1 className="font-semibold text-[55px] ">{stats.temp}</h1>
+            <h2 className="text-[33px]">°C</h2>
+          </>
+        ) : (
+          <>
+            <h1 className="font-semibold text-[55px] ">{stats.temp_f}</h1>
+            <h2 className="text-[33px]">°F</h2>
+          </>
+        )}
       </div>
       <div className="flex justify-center items-center text-slate-300 mt-8 text-[22px]">
         {stats.condition}
