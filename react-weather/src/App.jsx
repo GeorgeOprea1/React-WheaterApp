@@ -24,6 +24,23 @@ function App() {
       });
   }, [city, apiURL]);
 
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const long = position.coords.longitude;
+        const lat = position.coords.latitude;
+        const url = `https://api-bdc.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}`;
+
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setCity(data.city);
+          });
+      });
+    }
+  }
+
   return (
     <>
       <div className="bg-slate-800 h-screen flex justify-center items-center">
@@ -31,6 +48,7 @@ function App() {
           <div className="w-full sm:w-[50%] h-[100%]">
             {weatherData && (
               <Temperature
+                getLocation={getLocation}
                 setCity={setCity}
                 stats={{
                   temp: weatherData.current.temp_c,

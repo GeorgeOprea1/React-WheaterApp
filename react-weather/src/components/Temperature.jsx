@@ -2,7 +2,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaRegMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 
-const Temperature = ({ setCity, stats }) => {
+const Temperature = ({ setCity, stats, getLocation }) => {
   const handleCityChange = (e) => {
     setCity(e.target.value);
   };
@@ -17,7 +17,10 @@ const Temperature = ({ setCity, stats }) => {
           onChange={handleCityChange}
           defaultValue={"Bucuresti"}
         />
-        <IoLocationOutline className="m-4 text-white cursor-pointer w-7 h-7 text-transform scale-100 hover:scale-150 transition-transform duration-300 ease-in-out " />
+        <IoLocationOutline
+          onClick={getLocation}
+          className="m-4 text-white cursor-pointer w-7 h-7 text-transform scale-100 hover:scale-150  active:scale-75 transition-transform duration-300 ease-in-out  "
+        />
       </div>
       <div className="flex justify-center mt-8 ">
         {stats.isDay === 0 ? (
@@ -34,7 +37,7 @@ const Temperature = ({ setCity, stats }) => {
         {stats.condition}
       </div>
       <div className="flex justify-center items-center text-slate-400 mt-5 text-[15px]">
-        Today {stats.time}| {stats.location}
+        Today {stats.time} | {stats.location}
       </div>
     </div>
   );
