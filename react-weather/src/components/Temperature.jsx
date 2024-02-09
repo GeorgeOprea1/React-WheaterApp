@@ -8,11 +8,11 @@ const Temperature = () => {
   };
 
   return (
-    <>
-      <div className="flex justify-between">
+    <div className="w-[100%] h-[100%] flex flex-col justify-around ">
+      <div className="flex justify-around">
         <input
           type="text"
-          className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md w-60 p-2 focus:outline focus:border-slate-400"
+          className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md w-[80%] p-2 focus:outline focus:border-slate-400 rounded-xl"
           placeholder="Enter Your City Name"
           onChange={{ handleCityChange }}
         />
@@ -32,7 +32,7 @@ const Temperature = () => {
       <div className="flex justify-center items-center text-slate-400 mt-5 text-[15px]">
         Today 2024-02-09 13:10 | Pitesti
       </div>
-    </>
+    </div>
   );
 };
 
