@@ -9,12 +9,17 @@ const Highlights = ({ stats }) => {
       <h1 className="text-sm mt-2">{stats.title}</h1>
       <div className="mt-2">
         <span className="lg:text-3xl  text-xl font-bold">{stats.value} </span>
-        <span className="lg:text-2xl  text-lg ">{stats.unit} </span>
+        <span className="lg:text-2xl  text-md ">{stats.unit} </span>
       </div>
       {stats.direction ? (
-        <div className="mt-2 flex">
-          <CiPaperplane className="w-[24px] h-[24px] text-slate-200" />
-          <div className="ms-2 text-slate-200">{stats.direction}</div>
+        <div className="mt-2 flex justify-center items-center">
+          <CiPaperplane
+            alt="Direction Icon"
+            className="sm:w-[24px] w-[16px] sm:h-[24px] h-[16px] text-slate-200"
+          />
+          <div className="ms-2 text-slate-200 lg:text-lg  text-s">
+            {stats.direction}
+          </div>
         </div>
       ) : null}
       {stats.title == "Humidity" ? (

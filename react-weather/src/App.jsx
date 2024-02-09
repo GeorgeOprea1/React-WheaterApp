@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <div className="bg-slate-800 h-screen flex justify-center items-center">
-        <div className="w-full sm:w-[80%] h-[100%] sm:h-[70%] flex flex-col sm:flex-row justify-start items-start">
+        <div className="w-full sm:w-[80%] h-[100%] sm:h-[70%] flex flex-col sm:flex-row justify-start items-start overflow-y-auto">
           <div className="w-full sm:w-[50%] h-[100%]">
             {weatherData && (
               <Temperature
@@ -61,8 +61,11 @@ function App() {
             )}
           </div>
 
-          <div className="w-full sm:w-[50%] h-[100%] p-10 grid grid-cols-2 gap-6">
-            <h1 className="w-full text-slate-200 text-center text-2xl col-span-2">
+          <div
+            className="w-full sm:w-[50%] h-[100%] p-10 grid grid-cols-2  
+           gap-6"
+          >
+            <h1 className="w-full text-slate-200 text-center text-2xl col-span-2 pt-4">
               Today&apos;s Highlights
             </h1>
             {weatherData && (
