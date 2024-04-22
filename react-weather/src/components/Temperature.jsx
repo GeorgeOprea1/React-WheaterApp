@@ -3,14 +3,22 @@ import { FaRegMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 import { useState } from "react";
 
-const Temperature = ({ setCity, stats, getLocation }) => {
+const Temperature = ({
+  setCity,
+  stats,
+  getLocation,
+  cityInput,
+  setCityInput,
+}) => {
   const [isCelsius, setIsCelsius] = useState(true);
+
   const handleToggle = () => {
     setIsCelsius((prevIsCelsius) => !prevIsCelsius);
   };
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
+    setCityInput(e.target.value);
   };
 
   return (
@@ -21,7 +29,7 @@ const Temperature = ({ setCity, stats, getLocation }) => {
           className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md w-[80%] p-2 focus:outline focus:border-slate-400 rounded-xl"
           placeholder="Enter Your City Name"
           onChange={handleCityChange}
-          defaultValue={"Bucuresti"}
+          value={cityInput}
         />
         <IoLocationOutline
           onClick={getLocation}

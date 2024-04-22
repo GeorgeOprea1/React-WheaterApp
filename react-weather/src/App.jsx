@@ -7,6 +7,7 @@ function App() {
   const [city, setCity] = useState("Bucuresti");
   const [weatherData, setWeatherData] = useState(null);
   const apiURL = `https://api.weatherapi.com/v1/current.json?key=1aaeafd95fe84144a2f132502240902&q=${city}&aqi=no`;
+  const [cityInput, setCityInput] = useState("Bucuresti");
 
   useEffect(() => {
     fetch(apiURL)
@@ -18,7 +19,6 @@ function App() {
       })
       .then((data) => {
         setWeatherData(data);
-        console.log(data);
       })
       .catch((e) => {
         console.log(e);
@@ -35,8 +35,8 @@ function App() {
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             setCity(data.city);
+            setCityInput(data.city);
           });
       });
     }
@@ -51,6 +51,8 @@ function App() {
               <Temperature
                 getLocation={getLocation}
                 setCity={setCity}
+                setCityInput={setCityInput}
+                cityInput={cityInput}
                 stats={{
                   temp: weatherData.current.temp_c,
                   temp_f: weatherData.current.temp_f,
